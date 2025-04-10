@@ -59,4 +59,32 @@ The CD pipeline is configured to deploy the published application to an **IIS We
 ---
 
 ## 📁 Project Structure
+ ├── LearnSmartCoding.EssentialProducts.API.sln ├── src/ 
+---
+
+## 💬 Notes
+
+- This pipeline uses the **Classic Editor** for both build and release.
+- Ensure that the IIS server is reachable from Azure DevOps and has the required agent installed.
+- Port `5360` must not be blocked by firewall settings.
+
+---
+
+## 📸 Screenshots
+
+The screenshots can be seen above
+---
+
+## ✅ Status
+
+| Environment | Status      |
+|-------------|-------------|
+| CI          | ✔ Configured |
+| CD          | ✔ Configured (prod - IIS) |
+
+---
+
+## 📬 Contact
+
+For any issues or enhancements, feel free to raise an issue or reach out to the DevOps maintainer.
 
