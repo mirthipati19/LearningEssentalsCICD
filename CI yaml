@@ -1,0 +1,36 @@
+pool:
+  name: Azure Pipelines
+variables:
+  BuildConfiguration: 'Release'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: |
+     **/*/LearnSmartCoding.EssentialProducts.API.sln
+     
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    projects: '  **/*.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: test
+    projects: '**/*[Tt]lests/*csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: publish
+    arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory) '
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+
